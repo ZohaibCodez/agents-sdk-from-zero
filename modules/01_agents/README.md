@@ -1,101 +1,74 @@
 # 🚀 01_agents — Agent Fundamentals & Context Handling
 
-_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns, context management, and dynamic instruction techniques._
+_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns and context management._
 
 ---
 
 ## 📚 About This Module
 
-This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts, context passing, and advanced instruction patterns. Each script and notebook is a step in my learning-by-doing approach, with code, explanations, and real outputs.
+This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts and context passing. Each script is a step in my learning-by-doing approach, with code, explanations, and real outputs.
 
 ---
 
 ## 🗂️ Contents
 
-| File/Notebook                  | Description                                                                 |
-| ------------------------------ | --------------------------------------------------------------------------- |
-| `01_hello_agent.py`            | Minimal example: create and run a basic agent with static instructions.      |
-| `03_agents_instructions.ipynb` | Interactive notebook: explores agent instructions (static, dynamic, async).  |
-| `04_agent_context.py`          | Script: demonstrates context-aware agents with callable instructions.        |
-| `05_immutable_context.ipynb`   | Notebook: advanced context/state management and function tools.              |
+| File                  | Description                                                      |
+| --------------------- | ----------------------------------------------------------------|
+| `03_agents_ins.py`    | Script: agent instantiation and instruction examples.             |
+| `04_agent_context.py` | Script: demonstrates context-aware agents with callable instructions. |
 
 ---
 
 ## 🏁 Quick Start
 
 > **Prerequisites:**  
-> - Python environment with dependencies installed (`uv sync` or `pip install -r requirements.txt`)  
+> - Python environment with dependencies installed (`uv sync`)  
 > - `.env` file with your API key(s) in the project root
 
-### Run a Basic Agent Example
+### Run Agent Instantiation Example
 
 ```bash
-uv run modules/01_agents/01_hello_agent.py
+uv run modules/01_agents/03_agents_ins.py
 ```
 
-### Run a Context-Aware Agent Example
+### Run Context-Aware Agent Example
 
 ```bash
 uv run modules/01_agents/04_agent_context.py
 ```
 
-### Explore Interactive Notebooks
-
-Open the notebooks in your favorite Jupyter environment:
-
-- `03_agents_instructions.ipynb`
-- `05_immutable_context.ipynb`
-
 ---
 
 ## 📄 File Summaries
 
-### `01_hello_agent.py`
-- Loads API keys from `.env`
-- Disables tracing for privacy
-- Instantiates a basic agent with static instructions
-- Runs the agent on a simple prompt and prints the output
-
-### `03_agents_instructions.ipynb`
-- Static and dynamic agent instructions
-- Callable and async instruction functions
-- Context-aware instruction generation
-- Stateful instruction patterns
-- Practical code cells and output for each pattern
+### `03_agents_ins.py`
+- Agent instantiation and instruction examples
+- Demonstrates different ways to configure and run agents
 
 ### `04_agent_context.py`
 - Passing user context to agents
 - Using a callable to generate instructions based on context
 - Running the agent and printing both context and output
 
-### `05_immutable_context.ipynb`
-- Custom context objects and state management
-- Function tools for manipulating context (save, get, clear preferences)
-- Integration with the agent loop and tool usage
-- Example: managing user preferences with agent tools
-
 ---
 
 ## 🛠️ Configuration
 
 - **API Keys:**  
-  Place your OpenAI or Gemini API key in the root `.env` file:
+  Place your OpenAI API key in the root `.env` file:
   ```
   OPENAI_API_KEY=sk-...
-  # or for Gemini (if supported by your setup)
-  GEMINI_API_KEY=...
   ```
 
 - **Dependencies:**  
-  Managed at the project root. Use `uv sync` or `pip install -r requirements.txt`.
+  Managed at the project root. Use `uv sync` to install.
 
 ---
 
 ## 🧭 Learning Goals
 
 - Understand agent creation and configuration
-- Explore dynamic and context-aware instructions
-- Learn to manage agent state and context
+- Explore context-aware instructions
 - Build a foundation for advanced agentic workflows
 
 ---
