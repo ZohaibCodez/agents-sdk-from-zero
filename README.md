@@ -50,9 +50,12 @@ By the end of this journey, I aim to:
 .
 ├── 📁 modules/
 │   ├── 📁 01_agents/
-│   │   ├── 🐍 03_agents_ins.py
-│   │   └── 🐍 04_agent_context.py
-│   └── 📁 02_runner/
+│   │   ├── 🐍 01_hello_agent.py
+│   │   ├── 📓 03_agents_instructions.ipynb
+│   │   ├── 🐍 04_agent_context.py
+│   │   ├── 📓 05_immutable_context.ipynb
+│   │   └── 📄 README.md
+│   └── 📁 02_runner/   # (scaffolded, currently empty)
 ├── 🚫 .gitignore
 ├── 📄 .python-version
 ├── 🐍 main.py
@@ -62,17 +65,19 @@ By the end of this journey, I aim to:
 └── 📄 .env.example
 ```
 
+> **Note:** Each module (e.g., `01_agents/`) contains its own README for detailed explanations, code summaries, and learning notes.
+
 ---
 
 ## 📈 Progress Tracker
 
-| Module                 | Status         |
-| ---------------------- | -------------- |
-| 🚀 01-agent-basics     | 🚧 In Progress   |
-| ⚡ 02-agent-execution  | 🚧 In Progress |
-| 📊 03-handling-results | ⏳ Coming Up   |
-| 🔧 04-tool-integration | ⏳ Coming Up   |
-| ...                    | ...            |
+| Module                 | Status                                                      |
+| ---------------------- | ----------------------------------------------------------- |
+| 🚀 01_agents           | ✅ Complete: Core agent patterns, context, instructions      |
+| ⚡ 02_runner           | 🚧 In Progress (scaffolded, content coming soon)             |
+| 📊 03-handling-results | ⏳ Coming Up                                                |
+| 🔧 04-tool-integration | ⏳ Coming Up                                                |
+| ...                    | ...                                                         |
 
 ---
 

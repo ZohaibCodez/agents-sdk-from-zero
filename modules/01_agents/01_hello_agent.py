@@ -9,7 +9,7 @@ from agents import (
 )
 import asyncio
 import os
-from dotenv import load_dotenv,find_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
@@ -29,19 +29,14 @@ model = OpenAIChatCompletionsModel(
 )
 
 
-def create_instruction(ctx: RunContextWrapper[str], agent: Agent[str]) -> str:
-    print(f"[CONTEXT]:{ctx.context}")
-    return f"You are a helpful assistant that provides concise answers. You are talking to {ctx.context}"
-
-
-agent_basic: Agent[str] = Agent[str](
-    name="Context Agent", instructions=create_instruction, model=model
-)
-
-
 async def main():
-    name = "Zohaib"
-    result: RunResult = await Runner.run(agent_basic, "Hi", context=name)
+    agent = Agent(
+        name="Assistant",
+        instructions="You are a helpful assistant.",
+        model=model,
+    )
+
+    result = await Runner.run(agent, "HI!")
     print(result.final_output)
 
 
