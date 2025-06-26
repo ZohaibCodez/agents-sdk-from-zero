@@ -54,6 +54,8 @@ By the end of this journey, I aim to:
 │   │   ├── 📓 03_agents_instructions.ipynb
 │   │   ├── 🐍 04_agent_context.py
 │   │   ├── 📓 05_immutable_context.ipynb
+│   │   ├── 🐍 06_structure.py
+│   │   ├── 🐍 07_non_strict_output_type.py
 │   │   └── 📄 README.md
 │   └── 📁 02_runner/   # (scaffolded, currently empty)
 ├── 🚫 .gitignore
@@ -73,11 +75,19 @@ By the end of this journey, I aim to:
 
 | Module                 | Status                                                      |
 | ---------------------- | ----------------------------------------------------------- |
-| 🚀 01_agents           | ✅ Complete: Core agent patterns, context, instructions      |
+| 🚀 01_agents           | 🚧 In Progress: Core agent patterns, context, instructions, structured outputs |
 | ⚡ 02_runner           | 🚧 In Progress (scaffolded, content coming soon)             |
 | 📊 03-handling-results | ⏳ Coming Up                                                |
 | 🔧 04-tool-integration | ⏳ Coming Up                                                |
 | ...                    | ...                                                         |
+
+---
+
+## 🆕 Recent Advanced Additions
+
+- **Structured Outputs & Schemas:** See `modules/01_agents/06_structure.py` for strict/non-strict schema patterns, Pydantic models, and validation.
+- **Advanced Context Management:** See `modules/01_agents/05_immutable_context.ipynb` for stateful agent context and function tools.
+- **Instruction Patterns:** See `modules/01_agents/03_agents_instructions.ipynb` for static, dynamic, and callable agent instructions.
 
 ---
 
@@ -156,4 +166,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-06-25_
+_Last Updated: 2025-06-27_
