@@ -56,8 +56,14 @@ By the end of this journey, I aim to:
 │   │   ├── 📓 05_immutable_context.ipynb
 │   │   ├── 🐍 06_structure.py
 │   │   ├── 🐍 07_non_strict_output_type.py
+│   │   ├── 🐍 08_advanced_agent_features.py
 │   │   └── 📄 README.md
-│   └── 📁 02_runner/   # (scaffolded, currently empty)
+│   ├── 📁 02_runner/   # (scaffolded, currently empty)
+│   └── 📁 projects/
+│       ├── 📄 README.md
+│       └── 📁 01_fantasy_world_generator/
+│           ├── 📄 README.md
+│           └── 🐍 main.py
 ├── 🚫 .gitignore
 ├── 📄 .python-version
 ├── 🐍 main.py
@@ -67,19 +73,32 @@ By the end of this journey, I aim to:
 └── 📄 .env.example
 ```
 
-> **Note:** Each module (e.g., `01_agents/`) contains its own README for detailed explanations, code summaries, and learning notes.
+> **Note:** Each module (e.g., `01_agents/`) and project contains its own README for detailed explanations, code summaries, and learning notes.
 
 ---
 
 ## 📈 Progress Tracker
 
-| Module                 | Status                                                      |
-| ---------------------- | ----------------------------------------------------------- |
-| 🚀 01_agents           | 🚧 In Progress: Core agent patterns, context, instructions, structured outputs |
-| ⚡ 02_runner           | 🚧 In Progress (scaffolded, content coming soon)             |
-| 📊 03-handling-results | ⏳ Coming Up                                                |
-| 🔧 04-tool-integration | ⏳ Coming Up                                                |
+| Module/Section          | Status                                                      |
+| ----------------------- | ----------------------------------------------------------- |
+| 🚀 01_agents            | 🚧 In Progress Core agent patterns, context, instructions, structured outputs, advanced orchestration |
+| ⚡ 02_runner            | 🚧 In Progress (scaffolded, content coming soon)             |
+| 📊 03-handling-results  | ⏳ Coming Up                                                |
+| 🔧 04-tool-integration  | ⏳ Coming Up                                                |
+| 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
 | ...                    | ...                                                         |
+
+---
+
+## 🗃️ Projects
+
+The `modules/projects/` folder contains real-world, showcase projects that demonstrate advanced agentic workflows, tool integrations, and creative applications using the OpenAI Agents SDK.
+
+### Featured Project
+
+- **[Fantasy World Generator](modules/projects/01_fantasy_world_generator/)**: An interactive multi-agent system that builds a fantasy world, including magic systems, maps, lore, and magical creatures. Demonstrates agent orchestration, agents-as-tools, streaming, and creative AI workflows.
+
+See each project's README for setup and usage instructions.
 
 ---
 
@@ -88,6 +107,9 @@ By the end of this journey, I aim to:
 - **Structured Outputs & Schemas:** See `modules/01_agents/06_structure.py` for strict/non-strict schema patterns, Pydantic models, and validation.
 - **Advanced Context Management:** See `modules/01_agents/05_immutable_context.ipynb` for stateful agent context and function tools.
 - **Instruction Patterns:** See `modules/01_agents/03_agents_instructions.ipynb` for static, dynamic, and callable agent instructions.
+- **Agent Cloning, Agent-as-Tool, Orchestration:** See `modules/01_agents/08_advanced_agent_features.py` for advanced agent workflows, tool orchestration, and agent composition.
+- **Flexible Output Handling:** See `modules/01_agents/07_non_strict_output_type.py` for non-strict schema and flexible output examples.
+- **Real-World Projects:** See `modules/projects/` for advanced, practical agentic applications.
 
 ---
 

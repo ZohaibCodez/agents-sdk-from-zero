@@ -1,12 +1,12 @@
 # 🚀 01_agents — Agent Fundamentals & Context Handling
 
-_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns, context management, and structured outputs._
+_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns, context management, structured outputs, and advanced orchestration._
 
 ---
 
 ## 📚 About This Module
 
-This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts, context passing, advanced instruction patterns, and structured outputs. Each script and notebook is a step in my learning-by-doing approach, with code, explanations, and real outputs.
+This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts, context passing, advanced instruction patterns, structured outputs, and advanced agent orchestration. Each script and notebook is a step in my learning-by-doing approach, with code, explanations, and real outputs.
 
 ---
 
@@ -19,7 +19,8 @@ This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I e
 | `04_agent_context.py`          | Script: demonstrates context-aware agents with callable instructions.        |
 | `05_immutable_context.ipynb`   | Notebook: advanced context/state management and function tools.              |
 | `06_structure.py`              | Comprehensive guide: strict/non-strict schemas, structured outputs, Pydantic models, validation, and advanced agent output patterns. |
-| `07_non_strict_output_type.py` | Placeholder for future non-strict output type experiments.                   |
+| `07_non_strict_output_type.py` | Flexible output schemas and non-strict agent output handling.                |
+| `08_advanced_agent_features.py`| Advanced agent features: agent cloning, agent-as-tool, tool orchestration, and advanced context. |
 
 ---
 
@@ -54,6 +55,18 @@ Open the notebooks in your favorite Jupyter environment:
 uv run modules/01_agents/06_structure.py
 ```
 
+### Non-Strict Output Example
+
+```bash
+uv run modules/01_agents/07_non_strict_output_type.py
+```
+
+### Advanced Agent Features & Orchestration
+
+```bash
+uv run modules/01_agents/08_advanced_agent_features.py
+```
+
 ---
 
 ## 📄 File Summaries
@@ -85,7 +98,12 @@ uv run modules/01_agents/06_structure.py
 - Advanced agent output patterns and use cases
 
 ### `07_non_strict_output_type.py`
-- Placeholder for future non-strict output type experiments
+- Flexible output schemas and non-strict agent output handling
+- Demonstrates how to work with agents that return flexible or partially structured data
+
+### `08_advanced_agent_features.py`
+- Advanced agent features: agent cloning (with different personalities), agent-as-tool, tool orchestration, and advanced context management
+- Shows how to build complex agent workflows and tool-based orchestration
 
 ---
 
@@ -109,7 +127,7 @@ uv run modules/01_agents/06_structure.py
 - Explore dynamic and context-aware instructions
 - Learn to manage agent state and context
 - Master structured outputs and schema validation
-- Build a foundation for advanced agentic workflows
+- Build advanced agentic workflows and orchestration
 
 ---
 
@@ -117,6 +135,13 @@ uv run modules/01_agents/06_structure.py
 
 - [OpenAI Agents SDK Documentation](https://openai.github.io/openai-agents-python/quickstart/)
 - [Project Root README](../../README.md) for setup, philosophy, and structure
+
+---
+
+## 🗃️ Related Projects & Showcases
+
+- **[Projects Folder](../projects/)**: Explore real-world, advanced agentic applications built with the SDK.
+- **[Fantasy World Generator](../projects/01_fantasy_world_generator/)**: A multi-agent system that builds fantasy worlds, demonstrating agent orchestration, agents-as-tools, streaming, and creative workflows.
 
 ---
 
