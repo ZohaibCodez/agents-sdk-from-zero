@@ -57,8 +57,11 @@ By the end of this journey, I aim to:
 │   │   ├── 🐍 06_structure.py
 │   │   ├── 🐍 07_non_strict_output_type.py
 │   │   ├── 🐍 08_advanced_agent_features.py
+│   │   ├── 🐍 09_tool_behaviour.py
 │   │   └── 📄 README.md
-│   ├── 📁 02_runner/   # (scaffolded, currently empty)
+│   ├── 📁 02_runner/
+│   │   ├── 🐍 01_run.py
+│   │   └── 📄 README.md
 │   └── 📁 projects/
 │       ├── 📄 README.md
 │       └── 📁 01_fantasy_world_generator/
@@ -81,8 +84,8 @@ By the end of this journey, I aim to:
 
 | Module/Section          | Status                                                      |
 | ----------------------- | ----------------------------------------------------------- |
-| 🚀 01_agents            | 🚧 In Progress Core agent patterns, context, instructions, structured outputs, advanced orchestration |
-| ⚡ 02_runner            | 🚧 In Progress (scaffolded, content coming soon)             |
+| 🚀 01_agents            |  ✅ **Completed** Core agent patterns, context, instructions, structured outputs, advanced orchestration, tool behavior control |
+| ⚡ 02_runner            | 🚧 **In Progress** : Agent execution, RunResult exploration, execution lifecycle |
 | 📊 03-handling-results  | ⏳ Coming Up                                                |
 | 🔧 04-tool-integration  | ⏳ Coming Up                                                |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
@@ -104,6 +107,8 @@ See each project's README for setup and usage instructions.
 
 ## 🆕 Recent Advanced Additions
 
+- **Agent Execution & RunResult Exploration:** See `modules/02_runner/01_run.py` for comprehensive agent execution patterns, RunResult object property analysis, and execution lifecycle understanding.
+- **Tool Behavior Control:** See `modules/01_agents/09_tool_behaviour.py` for advanced tool orchestration patterns, execution flow control, and custom tool behavior functions.
 - **Structured Outputs & Schemas:** See `modules/01_agents/06_structure.py` for strict/non-strict schema patterns, Pydantic models, and validation.
 - **Advanced Context Management:** See `modules/01_agents/05_immutable_context.ipynb` for stateful agent context and function tools.
 - **Instruction Patterns:** See `modules/01_agents/03_agents_instructions.ipynb` for static, dynamic, and callable agent instructions.
@@ -119,7 +124,7 @@ See each project's README for setup and usage instructions.
 
 - Python (version specified in `.python-version`)
 - [uv](https://github.com/astral-sh/uv) package manager installed
-- `.env` file with OpenAI/Gemini API keys
+- `.env` file with OpenAI/Gemini/OpenRouter API keys
 
 ### 🚀 Quick Setup
 
@@ -188,4 +193,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-06-27_
+_Last Updated: 2025-06-28_

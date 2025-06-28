@@ -1,12 +1,12 @@
 # 🚀 01_agents — Agent Fundamentals & Context Handling
 
-_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns, context management, structured outputs, and advanced orchestration._
+_A hands-on, example-driven exploration of the OpenAI Agents SDK's core agent patterns, context management, structured outputs, advanced orchestration, and tool behavior control._
 
 ---
 
 ## 📚 About This Module
 
-This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts, context passing, advanced instruction patterns, structured outputs, and advanced agent orchestration. Each script and notebook is a step in my learning-by-doing approach, with code, explanations, and real outputs.
+This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I experiment with foundational agent concepts, context passing, advanced instruction patterns, structured outputs, advanced agent orchestration, and tool behavior control. Each script and notebook is a step in my learning-by-doing approach, with code, explanations, and real outputs.
 
 ---
 
@@ -21,6 +21,7 @@ This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I e
 | `06_structure.py`              | Comprehensive guide: strict/non-strict schemas, structured outputs, Pydantic models, validation, and advanced agent output patterns. |
 | `07_non_strict_output_type.py` | Flexible output schemas and non-strict agent output handling.                |
 | `08_advanced_agent_features.py`| Advanced agent features: agent cloning, agent-as-tool, tool orchestration, and advanced context. |
+| `09_tool_behaviour.py`         | Tool behavior control: default behavior, stop on first tool, stop at specific tools, and custom tool behavior functions. |
 
 ---
 
@@ -67,6 +68,12 @@ uv run modules/01_agents/07_non_strict_output_type.py
 uv run modules/01_agents/08_advanced_agent_features.py
 ```
 
+### Tool Behavior Control Examples
+
+```bash
+uv run modules/01_agents/09_tool_behaviour.py
+```
+
 ---
 
 ## 📄 File Summaries
@@ -105,6 +112,11 @@ uv run modules/01_agents/08_advanced_agent_features.py
 - Advanced agent features: agent cloning (with different personalities), agent-as-tool, tool orchestration, and advanced context management
 - Shows how to build complex agent workflows and tool-based orchestration
 
+### `09_tool_behaviour.py`
+- Tool behavior control patterns: default behavior (run_llm_again), stop on first tool, stop at specific tools (StopAtTools), and custom tool behavior functions
+- Demonstrates how to control when and how agents use tools during execution
+- Shows different execution flows and tool orchestration strategies
+
 ---
 
 ## 🛠️ Configuration
@@ -128,6 +140,7 @@ uv run modules/01_agents/08_advanced_agent_features.py
 - Learn to manage agent state and context
 - Master structured outputs and schema validation
 - Build advanced agentic workflows and orchestration
+- Control tool behavior and execution flow patterns
 
 ---
 

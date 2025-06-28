@@ -10,7 +10,7 @@ Demonstrates advanced features of the OpenAI Agents SDK, including agent cloning
 Environment variables:
     - GEMINI_API_KEY: Required for Gemini model access.
 
-Author: [Your Name or Organization]
+Author: Zohaib Khan
 """
 
 import asyncio
@@ -254,110 +254,196 @@ async def demo_agent_as_tool():
 
 
 @dataclass
-class TaskContext:
+class StudyContext:
+    """Context for tracking study planning progress and completed stages."""
     task_count: int = 0
-    completed_tasks: list[str] | None = None
-
-    def __post_init__(self):
-        if self.completed_tasks is None:
-            self.completed_tasks = []
+    completed_stages: list[str] = field(default_factory=list)
 
 
-@function_tool
-async def calculate_sum(context: RunContextWrapper, numbers: list[int]) -> str:
-    """Calculate the sum of a list of numbers"""
-    print("📅 [DEBUG] Called: calculate_sum")
-    total = sum(numbers)
-    context.context.task_count += 1
-    return f"Sum of {numbers} = {total}"
-
+# ===============================
+# 🔧 Study Planning Tools
+# ===============================
 
 @function_tool
-async def calculate_product(context: RunContextWrapper, numbers: list[int]) -> str:
-    """Calculate the product of a list of numbers"""
-    print("📅 [DEBUG] Called: calculate_product")
-    product = 1
-    for num in numbers:
-        product *= num
-    context.context.task_count += 1
-    return f"Product of {numbers} = {product}"
-
-
-@function_tool
-async def final_calculation(
-    context: RunContextWrapper, operation: str, result: str
+async def generate_schedule(
+    context: RunContextWrapper[StudyContext], subject: str, days: int
 ) -> str:
-    """Mark a calculation as complete"""
-    print("📅 [DEBUG] Called: final_calculation")
-    context.context.completed_tasks.append(f"{operation}: {result}")
-    return f"✅ Completed {operation} - {result}"
+    """Generate a study schedule for a given subject and number of days."""
+    context.context.task_count += 1
+    return f"Generated a {days}-day study schedule for {subject}."
 
 
-async def demo_tool_use_behavior():
-    """Demonstrate different tool_use_behavior settings"""
-    print("=" * 60)
-    print("DEMO 3: Tool Use Behavior")
-    print("=" * 60)
+@function_tool
+async def list_resources(context: RunContextWrapper[StudyContext], subject: str) -> str:
+    """List top learning resources for a given subject."""
+    context.context.task_count += 1
+    return f"Top resources for {subject} include: freeCodeCamp, YouTube - Tech With Tim, Python Docs."
 
-    context = TaskContext()
 
-    # 1. Default behavior: "run_llm_again"
-    print("🔄 Default Behavior (run_llm_again):")
-    agent_default = Agent(
-        name="DefaultAgent",
-        instructions="You are a calculator. Use tools to perform calculations and explain the results.",
-        tools=[calculate_sum, calculate_product],
-        tool_use_behavior="run_llm_again",  # Default
+@function_tool
+async def track_completion(
+    context: RunContextWrapper[StudyContext], subject: str
+) -> str:
+    """Mark a subject as completed in the study context."""
+    context.context.task_count += 1
+    context.context.completed_stages.append(subject)
+    return f"Marked {subject} as completed."
+
+
+# ===============================
+# 🚀 Tool Use Behavior Demos
+# ===============================
+
+async def demo_tool_use_behaviors():
+    """Demonstrate different tool use behaviors with study planning agents."""
+    prompt = "Help me study Python for the next 5 days. Provide a schedule and resources, then track my progress."
+
+    print("\n🔄 DEMO 1: run_llm_again (default)")
+    context = StudyContext()
+    agent1 = Agent(
+        name="Run Again Agent",
+        instructions="You are a study planner assistant. Use tools to help the user plan, resource, and track their study and use tools one by one",
+        tools=[generate_schedule, list_resources, track_completion],
+        tool_use_behavior="run_llm_again",
         model=model,
+        model_settings=ModelSettings(temperature=0.5),
     )
+    result = await Runner.run(agent1, prompt, context=context)
+    print(result.final_output)
+    print(f"Task Count: {context.task_count}, Completed: {context.completed_stages}\n")
 
-    result = await Runner.run(
-        agent_default, "Calculate the sum of [1, 2, 3, 4, 5]", context=context
-    )
-    print(f"   {result.final_output}")
-    print(f"   Task count: {context.task_count}\n")
-
-    # 2. Stop on first tool
-    print("⏹️  Stop on First Tool:")
-    context = TaskContext()  # Reset context
-    agent_stop_first = Agent(
-        name="StopFirstAgent",
-        instructions="Use tools to perform calculations.",
-        tools=[calculate_sum, calculate_product],
+    print("⏹️  DEMO 2: stop_on_first_tool")
+    context = StudyContext()
+    agent2 = Agent(
+        name="Stop First Agent",
+        instructions="You are a study planner assistant. Use tools to help the user plan, resource, and track their study and use tools one by one",
+        tools=[generate_schedule, list_resources, track_completion],
         tool_use_behavior="stop_on_first_tool",
         model=model,
+        model_settings=ModelSettings(temperature=0.5),
     )
+    result = await Runner.run(agent2, prompt, context=context)
+    print(result.final_output)
+    print(f"Task Count: {context.task_count}, Completed: {context.completed_stages}\n")
 
-    result = await Runner.run(
-        agent_stop_first,
-        "Calculate the sum of [1, 2, 3, 4, 5] and mark it as complete",
-        context=context,
-    )
-    print(f"   {result.final_output}")
-    print(f"   Task count: {context.task_count}\n")
-
-    # 3. Stop at specific tools
-    print("🎯 Stop at Specific Tools:")
-    context = TaskContext()  # Reset context
-    agent_stop_specific = Agent(
-        name="StopSpecificAgent",
-        instructions="Use tools to perform calculations.",
-        tools=[calculate_sum, calculate_product, final_calculation],
-        tool_use_behavior={"stop_at_tool_names": ["final_calculation"]},
+    print("🎯 DEMO 3: stop_at_tool_names = ['list_resources']")
+    context = StudyContext()
+    agent3 = Agent(
+        name="Stop Specific Agent",
+        instructions="You are a study planner assistant. Use tools to help the user plan, resource, and track their study and use tools one by one",
+        tools=[generate_schedule, list_resources, track_completion],
+        tool_use_behavior={"stop_at_tool_names": ["list_resources"]},
         model=model,
+        model_settings=ModelSettings(temperature=0.5),
     )
+    result = await Runner.run(agent3, prompt, context=context)
+    print(result.final_output)
+    print(f"Task Count: {context.task_count}, Completed: {context.completed_stages}\n")
 
-    result = await Runner.run(
-        agent_stop_specific,
-        "Calculate the sum of [1, 2, 3] and mark it as complete",
-        context=context,
+
+# =============================================================================
+# Custom Tool Behavior Function
+# =============================================================================
+
+async def custom_tool_behavior(
+    context: RunContextWrapper[StudyContext], tool_results: list[Any]
+) -> ToolsToFinalOutputResult:
+    """Custom function to determine when to stop based on tool results."""
+    if context.context.task_count >= 2:
+        return ToolsToFinalOutputResult(
+            is_final_output=True,
+            final_output=f"Stopped after {context.context.task_count} tools. Completed stages: {context.context.completed_stages}",
+        )
+
+    # Continue if less than 2 tasks
+    return ToolsToFinalOutputResult(is_final_output=False)
+
+
+async def demo_custom_tool_behavior():
+    """Demonstrate custom tool behavior that stops after 2 tool calls."""
+    prompt = "Help me study Python for the next 5 days. Provide a schedule and resources, then track my progress."
+    print("🧠 DEMO 4: custom_tool_behavior - stop after 2 tools")
+    context = StudyContext()
+    agent4 = Agent(
+        name="Custom Behaviour Agent",
+        instructions="You are a study planner assistant. Use tools to help the user plan, resource, and track their study and use tools one by one",
+        tools=[generate_schedule, list_resources, track_completion],
+        tool_use_behavior=custom_tool_behavior,
+        model=model,
+        model_settings=ModelSettings(temperature=0.5),
     )
-    print(f"   {result.final_output}")
-    print(f"   Task count: {context.task_count}\n")
-    print(f"   Completed tasks: {context.completed_tasks}\n")
+    result = await Runner.run(agent4, prompt, context=context)
+    print(result.final_output)
+    print(f"Task Count: {context.task_count}, Completed: {context.completed_stages}\n")
+
+
+# =============================================================================
+# reset_tool_choice Setting Demo
+# =============================================================================
+
+# ===============================
+# 🔧 Repeating Tool for Loop Demo
+# ===============================
+
+@function_tool
+async def repeating_tool(context: RunContextWrapper[StudyContext], subject: str) -> str:
+    """Tool that can be called repeatedly to demonstrate loop behavior."""
+    print("🔁 [DEBUG] Called: repeating_tool")
+    context.context.task_count += 1
+    return f"Revisiting {subject}... again."
+
+
+async def demo_reset_tool_choice():
+    """Demonstrate the effect of reset_tool_choice setting on tool repetition."""
+    prompt = "Keep reviewing Python until I say stop."
+
+    print("🔁 LOOP DEMO: reset_tool_choice = False (may cause repeats)")
+    context = StudyContext()
+    agent = Agent(
+        name="LooperAgent",
+        instructions="You are a study assistant. Use the repeating tool if needed. Only repeat if necessary.",
+        tools=[repeating_tool],
+        tool_use_behavior="run_llm_again",
+        reset_tool_choice=False,
+        model=model,
+        model_settings=ModelSettings(temperature=0.5),
+    )
+    result = await Runner.run(agent, prompt, context=context)
+    print(result.final_output)
+    print(f"Repeat Count: {context.task_count}\n")
+
+    print("🔁 LOOP DEMO: reset_tool_choice = True (should stop repeating)")
+    context = StudyContext()
+    agent = Agent(
+        name="LooperAgent",
+        instructions="You are a study assistant. Use the repeating tool if needed. Only repeat if necessary.",
+        tools=[repeating_tool],
+        tool_use_behavior="run_llm_again",
+        reset_tool_choice=True,
+        model=model,
+        model_settings=ModelSettings(temperature=0.5),
+    )
+    result = await Runner.run(agent, prompt, context=context)
+    print(result.final_output)
+    print(f"Repeat Count: {context.task_count}\n")
+
+
+# ===============================
+# 🚀 Main Demo Runner
+# ===============================
+
+async def run_all_demos():
+    """Run all demonstration scenarios for advanced agent features."""
+    print("🚀 Starting Advanced Agent Features Demo Suite")
+    print("=" * 60)
+    
+    # Uncomment the demo you want to run:
+    # await demo_agent_cloning()
+    # await demo_agent_as_tool()
+    # await demo_tool_use_behaviors()
+    # await demo_custom_tool_behavior()
+    await demo_reset_tool_choice()
 
 
 if __name__ == "__main__":
-    # asyncio.run(demo_agent_cloning())
-    # asyncio.run(demo_agent_as_tool())
-    asyncio.run(demo_tool_use_behavior())
+    asyncio.run(run_all_demos())
