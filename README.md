@@ -2,6 +2,8 @@
 
 _A hands-on, teaching-by-doing path to mastering the OpenAI Agents SDK._
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ---
 
 ## 📖 About This Repository
@@ -51,6 +53,7 @@ By the end of this journey, I aim to:
 ├── 📁 modules/
 │   ├── 📁 01_agents/
 │   │   ├── 🐍 01_hello_agent.py
+│   │   ├── 🐍 02_hello_handoff.py
 │   │   ├── 📓 03_agents_instructions.ipynb
 │   │   ├── 🐍 04_agent_context.py
 │   │   ├── 📓 05_immutable_context.ipynb
@@ -61,6 +64,10 @@ By the end of this journey, I aim to:
 │   │   └── 📄 README.md
 │   ├── 📁 02_runner/
 │   │   ├── 🐍 01_run.py
+│   │   ├── 🐍 02_run_sync.py
+│   │   ├── 🐍 03_stream.py
+│   │   ├── 🐍 04_stream_text.py
+│   │   ├── 🐍 05_stream_items.py
 │   │   └── 📄 README.md
 │   └── 📁 projects/
 │       ├── 📄 README.md
@@ -84,8 +91,8 @@ By the end of this journey, I aim to:
 
 | Module/Section          | Status                                                      |
 | ----------------------- | ----------------------------------------------------------- |
-| 🚀 01_agents            |  ✅ **Completed** Core agent patterns, context, instructions, structured outputs, advanced orchestration, tool behavior control |
-| ⚡ 02_runner            | 🚧 **In Progress** : Agent execution, RunResult exploration, execution lifecycle |
+| 🚀 01_agents            | ✅ **Completed** Core agent patterns, context, instructions, structured outputs, advanced orchestration, tool behavior control, agent handoffs |
+| ⚡ 02_runner            | 🚧 **In Progress** : Agent execution, RunResult exploration, execution lifecycle, synchronous execution, streaming patterns, real-time event processing |
 | 📊 03-handling-results  | ⏳ Coming Up                                                |
 | 🔧 04-tool-integration  | ⏳ Coming Up                                                |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
@@ -107,6 +114,11 @@ See each project's README for setup and usage instructions.
 
 ## 🆕 Recent Advanced Additions
 
+- **Agent Handoffs & Multi-Agent Coordination:** See `modules/01_agents/02_hello_handoff.py` for agent handoff patterns, triage agents, and specialized agent coordination.
+- **Synchronous Agent Execution:** See `modules/02_runner/02_run_sync.py` for synchronous agent execution without async/await patterns.
+- **Streaming Agent Execution:** See `modules/02_runner/03_stream.py` for real-time streaming agent execution with function tools and event processing.
+- **Text Streaming & Conversation Chaining:** See `modules/02_runner/04_stream_text.py` for real-time text streaming, delta events, and multi-turn conversation management.
+- **Streaming Items & Tool Integration:** See `modules/02_runner/05_stream_items.py` for advanced streaming with tools, event types, and ItemHelpers for message formatting.
 - **Agent Execution & RunResult Exploration:** See `modules/02_runner/01_run.py` for comprehensive agent execution patterns, RunResult object property analysis, and execution lifecycle understanding.
 - **Tool Behavior Control:** See `modules/01_agents/09_tool_behaviour.py` for advanced tool orchestration patterns, execution flow control, and custom tool behavior functions.
 - **Structured Outputs & Schemas:** See `modules/01_agents/06_structure.py` for strict/non-strict schema patterns, Pydantic models, and validation.
@@ -193,4 +205,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-06-28_
+_Last Updated: 2025-06-29_

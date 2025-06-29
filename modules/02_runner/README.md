@@ -15,6 +15,10 @@ This folder explores the **OpenAI Agents SDK Runner** - the core execution engin
 | File/Notebook                  | Description                                                                 |
 | ------------------------------ | --------------------------------------------------------------------------- |
 | `01_run.py`                    | Comprehensive guide: basic agent execution, RunResult object exploration, and property analysis. |
+| `02_run_sync.py`               | Synchronous agent execution demonstration without async/await patterns. |
+| `03_stream.py`                 | Real-time streaming agent execution with function tools and event processing. |
+| `04_stream_text.py`            | Text streaming with delta events and multi-turn conversation management. |
+| `05_stream_items.py`           | Advanced streaming with tools, event types, and ItemHelpers for message formatting. |
 
 ---
 
@@ -28,6 +32,25 @@ This folder explores the **OpenAI Agents SDK Runner** - the core execution engin
 
 ```bash
 uv run modules/02_runner/01_run.py
+```
+
+### Run Synchronous Agent Execution
+
+```bash
+uv run modules/02_runner/02_run_sync.py
+```
+
+### Run Streaming Agent Examples
+
+```bash
+# Basic streaming with tools
+uv run modules/02_runner/03_stream.py
+
+# Text streaming with conversation chaining
+uv run modules/02_runner/04_stream_text.py
+
+# Advanced streaming with items and tools
+uv run modules/02_runner/05_stream_items.py
 ```
 
 ---
@@ -46,6 +69,54 @@ uv run modules/02_runner/01_run.py
   - Master RunResult object structure and properties
   - Learn proper error handling patterns
   - Explore agent execution lifecycle
+
+### `02_run_sync.py`
+- **Core Focus**: Synchronous agent execution without async/await patterns
+- **Key Features**:
+  - Synchronous agent execution using `Runner.run_sync()`
+  - History agent with concise response capabilities
+  - Simplified execution pattern for non-async environments
+  - Error handling for synchronous execution
+- **Learning Outcomes**:
+  - Understand synchronous vs asynchronous execution
+  - Learn when to use synchronous patterns
+  - Master simplified agent execution workflows
+
+### `03_stream.py`
+- **Core Focus**: Real-time streaming agent execution with function tools
+- **Key Features**:
+  - Streaming agent execution using `Runner.run_streamed()`
+  - Real-time event processing and debugging
+  - Function tool integration with streaming
+  - Weather agent with tool capabilities
+- **Learning Outcomes**:
+  - Master streaming execution patterns
+  - Understand real-time event processing
+  - Learn tool integration with streaming
+
+### `04_stream_text.py`
+- **Core Focus**: Text streaming with delta events and conversation chaining
+- **Key Features**:
+  - Real-time text streaming with `ResponseTextDeltaEvent`
+  - Multi-turn conversation management
+  - Conversation chaining using `to_input_list()`
+  - Joker agent with streaming responses
+- **Learning Outcomes**:
+  - Understand delta text events
+  - Master conversation chaining patterns
+  - Learn real-time text streaming
+
+### `05_stream_items.py`
+- **Core Focus**: Advanced streaming with tools, event types, and ItemHelpers
+- **Key Features**:
+  - Multiple event type handling (raw_response, agent_updated, run_item)
+  - Tool call and output processing in real-time
+  - ItemHelpers for message output formatting
+  - Advanced streaming patterns with tools
+- **Learning Outcomes**:
+  - Master different streaming event types
+  - Understand tool integration in streaming
+  - Learn ItemHelpers for message formatting
 
 ---
 
@@ -89,11 +160,16 @@ The `01_run.py` script provides a comprehensive exploration of the RunResult obj
 
 ## 🧭 Learning Goals
 
-- Master agent execution using the Runner
+- Master agent execution using the Runner (async and sync patterns)
 - Understand RunResult object structure and properties
 - Learn proper error handling for agent execution
 - Explore agent execution lifecycle and state management
 - Build confidence in debugging and analyzing agent runs
+- Master streaming execution patterns and real-time event processing
+- Understand synchronous vs asynchronous execution patterns
+- Learn conversation chaining and multi-turn dialogue management
+- Master tool integration with streaming execution
+- Understand different streaming event types and their use cases
 
 ---
 

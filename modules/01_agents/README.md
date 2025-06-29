@@ -15,6 +15,7 @@ This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I e
 | File/Notebook                  | Description                                                                 |
 | ------------------------------ | --------------------------------------------------------------------------- |
 | `01_hello_agent.py`            | Minimal example: create and run a basic agent with static instructions.      |
+| `02_hello_handoff.py`          | Multi-agent translation system with handoff capabilities and triage agents.  |
 | `03_agents_instructions.ipynb` | Interactive notebook: explores agent instructions (static, dynamic, async).  |
 | `04_agent_context.py`          | Script: demonstrates context-aware agents with callable instructions.        |
 | `05_immutable_context.ipynb`   | Notebook: advanced context/state management and function tools.              |
@@ -35,6 +36,12 @@ This folder is part of my journey to master the **OpenAI Agents SDK**. Here, I e
 
 ```bash
 uv run modules/01_agents/01_hello_agent.py
+```
+
+### Run a Multi-Agent Handoff Example
+
+```bash
+uv run modules/01_agents/02_hello_handoff.py
 ```
 
 ### Run a Context-Aware Agent Example
@@ -83,6 +90,19 @@ uv run modules/01_agents/09_tool_behaviour.py
 - Loads API keys from `.env`
 - Instantiates a basic agent with static instructions
 - Runs the agent and prints the output
+
+### `02_hello_handoff.py`
+- **Core Focus**: Multi-agent translation system with handoff capabilities
+- **Key Features**:
+  - Triage agent that determines which specialized agent should handle requests
+  - French translation agent with poetic flair
+  - Emojifier agent for converting text to expressive emoji sequences
+  - Agent handoff patterns and coordination
+- **Learning Outcomes**:
+  - Understand agent handoff mechanisms
+  - Learn to build triage and specialized agent systems
+  - Master multi-agent coordination patterns
+  - Explore agent specialization and delegation
 
 ### `03_agents_instructions.ipynb`
 - Explores agent instructions: static, dynamic, callable, and context-aware
@@ -141,6 +161,8 @@ uv run modules/01_agents/09_tool_behaviour.py
 - Master structured outputs and schema validation
 - Build advanced agentic workflows and orchestration
 - Control tool behavior and execution flow patterns
+- Master agent handoff mechanisms and multi-agent coordination
+- Learn to build triage systems and specialized agent networks
 
 ---
 

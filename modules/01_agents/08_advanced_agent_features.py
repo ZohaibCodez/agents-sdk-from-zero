@@ -256,6 +256,7 @@ async def demo_agent_as_tool():
 @dataclass
 class StudyContext:
     """Context for tracking study planning progress and completed stages."""
+
     task_count: int = 0
     completed_stages: list[str] = field(default_factory=list)
 
@@ -263,6 +264,7 @@ class StudyContext:
 # ===============================
 # 🔧 Study Planning Tools
 # ===============================
+
 
 @function_tool
 async def generate_schedule(
@@ -293,6 +295,7 @@ async def track_completion(
 # ===============================
 # 🚀 Tool Use Behavior Demos
 # ===============================
+
 
 async def demo_tool_use_behaviors():
     """Demonstrate different tool use behaviors with study planning agents."""
@@ -345,6 +348,7 @@ async def demo_tool_use_behaviors():
 # Custom Tool Behavior Function
 # =============================================================================
 
+
 async def custom_tool_behavior(
     context: RunContextWrapper[StudyContext], tool_results: list[Any]
 ) -> ToolsToFinalOutputResult:
@@ -384,6 +388,7 @@ async def demo_custom_tool_behavior():
 # ===============================
 # 🔧 Repeating Tool for Loop Demo
 # ===============================
+
 
 @function_tool
 async def repeating_tool(context: RunContextWrapper[StudyContext], subject: str) -> str:
@@ -432,11 +437,12 @@ async def demo_reset_tool_choice():
 # 🚀 Main Demo Runner
 # ===============================
 
+
 async def run_all_demos():
     """Run all demonstration scenarios for advanced agent features."""
     print("🚀 Starting Advanced Agent Features Demo Suite")
     print("=" * 60)
-    
+
     # Uncomment the demo you want to run:
     # await demo_agent_cloning()
     # await demo_agent_as_tool()
