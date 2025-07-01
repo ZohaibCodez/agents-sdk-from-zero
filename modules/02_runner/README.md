@@ -19,6 +19,10 @@ This folder explores the **OpenAI Agents SDK Runner** - the core execution engin
 | `03_stream.py`                 | Real-time streaming agent execution with function tools and event processing. |
 | `04_stream_text.py`            | Text streaming with delta events and multi-turn conversation management. |
 | `05_stream_items.py`           | Advanced streaming with tools, event types, and ItemHelpers for message formatting. |
+| `06_runner_rcontext.py`        | Advanced context, tool calls, max turn handling, and input type flexibility. |
+| `07_runner_handoffs.py`        | Agent handoff routing and smart assistant scenarios. |
+| `08_runner_chat.py`            | Chat thread management and multi-turn conversation history. |
+| `09_runner_exceptions.py`      | Robust exception handling and guardrail demos. |
 
 ---
 
@@ -51,6 +55,22 @@ uv run modules/02_runner/04_stream_text.py
 
 # Advanced streaming with items and tools
 uv run modules/02_runner/05_stream_items.py
+```
+
+### Run Advanced Runner Examples
+
+```bash
+# Advanced context, tool calls, max turn handling
+uv run modules/02_runner/06_runner_rcontext.py
+
+# Agent handoff routing and smart assistant scenarios
+uv run modules/02_runner/07_runner_handoffs.py
+
+# Chat thread management and multi-turn conversation history
+uv run modules/02_runner/08_runner_chat.py
+
+# Robust exception handling and guardrail demos
+uv run modules/02_runner/09_runner_exceptions.py
 ```
 
 ---
@@ -118,6 +138,58 @@ uv run modules/02_runner/05_stream_items.py
   - Understand tool integration in streaming
   - Learn ItemHelpers for message formatting
 
+### `06_runner_rcontext.py`
+- **Core Focus**: Advanced context, tool calls, max turn handling, and input type flexibility.
+- **Key Features**:
+  - Advanced context management
+  - Tool calls and integration
+  - Max turn handling and conversation management
+  - Input type flexibility and adaptability
+- **Learning Outcomes**:
+  - Master advanced context management
+  - Understand tool calls and integration
+  - Learn max turn handling and conversation management
+  - Explore input type flexibility and adaptability
+
+### `07_runner_handoffs.py`
+- **Core Focus**: Agent handoff routing and smart assistant scenarios.
+- **Key Features**:
+  - Agent handoff routing
+  - Smart assistant scenarios
+  - Multi-agent collaboration and task distribution
+  - Advanced agent execution patterns
+- **Learning Outcomes**:
+  - Master agent handoff routing
+  - Understand smart assistant scenarios
+  - Learn multi-agent collaboration and task distribution
+  - Explore advanced agent execution patterns
+
+### `08_runner_chat.py`
+- **Core Focus**: Chat thread management and multi-turn conversation history.
+- **Key Features**:
+  - Chat thread management
+  - Multi-turn conversation history
+  - Advanced conversation management
+  - Real-time event processing
+- **Learning Outcomes**:
+  - Master chat thread management
+  - Understand multi-turn conversation history
+  - Learn advanced conversation management
+  - Explore real-time event processing
+
+### `09_runner_exceptions.py`
+- **Core Focus**: Robust exception handling and guardrail demos.
+- **Key Features**:
+  - Robust exception handling
+  - Guardrail demos
+  - Error handling and safety checks
+  - Advanced error management
+- **Learning Outcomes**:
+  - Master robust exception handling
+  - Understand guardrail demos
+  - Learn error handling and safety checks
+  - Explore advanced error management
+
 ---
 
 ## 🔍 RunResult Object Deep Dive
@@ -170,6 +242,10 @@ The `01_run.py` script provides a comprehensive exploration of the RunResult obj
 - Learn conversation chaining and multi-turn dialogue management
 - Master tool integration with streaming execution
 - Understand different streaming event types and their use cases
+- Master advanced context management
+- Understand agent handoff routing and smart assistant scenarios
+- Master chat thread management and multi-turn conversation history
+- Explore robust exception handling and guardrail demos
 
 ---
 

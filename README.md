@@ -68,7 +68,13 @@ By the end of this journey, I aim to:
 │   │   ├── 🐍 03_stream.py
 │   │   ├── 🐍 04_stream_text.py
 │   │   ├── 🐍 05_stream_items.py
+│   │   ├── 🐍 06_runner_rcontext.py
+│   │   ├── 🐍 07_runner_handoffs.py
+│   │   ├── 🐍 08_runner_chat.py
+│   │   ├── 🐍 09_runner_exceptions.py
 │   │   └── 📄 README.md
+│   ├── 📁 03_results/
+│   │   ├── 🐍 01_run_result_basics.py
 │   └── 📁 projects/
 │       ├── 📄 README.md
 │       └── 📁 01_fantasy_world_generator/
@@ -79,8 +85,9 @@ By the end of this journey, I aim to:
 ├── 🐍 main.py
 ├── 📋 pyproject.toml
 ├── 📖 README.md
-└── 🔒 uv.lock
-└── 📄 .env.example
+├── 🔒 uv.lock
+├── 📄 .env.example
+├── 📄 LICENSE
 ```
 
 > **Note:** Each module (e.g., `01_agents/`) and project contains its own README for detailed explanations, code summaries, and learning notes.
@@ -92,8 +99,8 @@ By the end of this journey, I aim to:
 | Module/Section          | Status                                                      |
 | ----------------------- | ----------------------------------------------------------- |
 | 🚀 01_agents            | ✅ **Completed** Core agent patterns, context, instructions, structured outputs, advanced orchestration, tool behavior control, agent handoffs |
-| ⚡ 02_runner            | 🚧 **In Progress** : Agent execution, RunResult exploration, execution lifecycle, synchronous execution, streaming patterns, real-time event processing |
-| 📊 03-handling-results  | ⏳ Coming Up                                                |
+| ⚡ 02_runner            | ✅ **Completed** Agent execution, RunResult exploration, execution lifecycle, synchronous execution, streaming patterns, real-time event processing, advanced context, handoffs, chat, exceptions |
+| 📊 03_results           | 🚀 Started: RunResult basics and results handling            |
 | 🔧 04-tool-integration  | ⏳ Coming Up                                                |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
 | ...                    | ...                                                         |
@@ -114,6 +121,11 @@ See each project's README for setup and usage instructions.
 
 ## 🆕 Recent Advanced Additions
 
+- **RunResult Basics & Results Handling:** See `modules/03_results/01_run_result_basics.py` for foundational RunResult usage and results inspection.
+- **Runner Advanced Context & Max Turns:** See `modules/02_runner/06_runner_rcontext.py` for advanced context, tool calls, and max turn handling.
+- **Runner Handoffs:** See `modules/02_runner/07_runner_handoffs.py` for agent handoff routing and smart assistant scenarios.
+- **Runner Chat & Multi-Turn Conversations:** See `modules/02_runner/08_runner_chat.py` for chat thread management and conversation history.
+- **Runner Exception Handling:** See `modules/02_runner/09_runner_exceptions.py` for robust exception handling and guardrail demos.
 - **Agent Handoffs & Multi-Agent Coordination:** See `modules/01_agents/02_hello_handoff.py` for agent handoff patterns, triage agents, and specialized agent coordination.
 - **Synchronous Agent Execution:** See `modules/02_runner/02_run_sync.py` for synchronous agent execution without async/await patterns.
 - **Streaming Agent Execution:** See `modules/02_runner/03_stream.py` for real-time streaming agent execution with function tools and event processing.
@@ -205,4 +217,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-06-29_
+_Last Updated: 2025-07-01_
