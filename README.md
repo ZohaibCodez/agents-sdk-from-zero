@@ -227,7 +227,7 @@ This is a **personal learning repo**, but:
 ---
 
 **🎯 Final Goal:**
-Master the OpenAI Agents SDK from foundation to production-ready apps.
+Master the OpenAI Agents SDK from foundation to production-ready apps.<br>
 **📚 Philosophy:**
 Learn deeply. Build consistently. Teach simply.
 
