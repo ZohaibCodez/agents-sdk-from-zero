@@ -3,6 +3,12 @@
 _A hands-on, teaching-by-doing path to mastering the OpenAI Agents SDK._
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
+![OpenAI Agents SDK](https://img.shields.io/badge/OpenAI%20Agents%20SDK-Latest-green.svg)
+![Learning Status](https://img.shields.io/badge/status-learning%20in%20progress-orange.svg)
+![Last Commit](https://img.shields.io/github/last-commit/ZohaibCodez/agents-sdk-from-zero)
+![GitHub Stars](https://img.shields.io/github/stars/ZohaibCodez/agents-sdk-from-zero)
+![GitHub Forks](https://img.shields.io/github/forks/ZohaibCodez/agents-sdk-from-zero)
 
 ---
 
@@ -75,6 +81,22 @@ By the end of this journey, I aim to:
 │   │   └── 📄 README.md
 │   ├── 📁 03_results/
 │   │   ├── 🐍 01_run_result_basics.py
+│   │   └── 📄 README.md
+│   ├── 📁 04_stream/
+│   │   ├── 🐍 01_basic_streaming.py
+│   │   ├── 🐍 02_raw_response_events.py
+│   │   ├── 🐍 03_run_item_events.py
+│   │   ├── 🐍 04_streaming_with_handoffs.py
+│   │   └── 📄 README.md
+│   ├── 📁 05_tools/
+│   │   ├── 🐍 01_basic_function_tools.py
+│   │   ├── 🐍 02_custom_function_tools.py
+│   │   ├── 🐍 03_advanced_function_tools.py
+│   │   ├── 🐍 04_agents_as_tools.py
+│   │   ├── 🐍 05_error_handling_tools.py
+│   │   ├── 🐍 06_context_aware_tools.py
+│   │   ├── 🐍 07_tool_choice_streaming.py
+│   │   └── 📄 README.md
 │   └── 📁 projects/
 │       ├── 📄 README.md
 │       └── 📁 01_fantasy_world_generator/
@@ -100,8 +122,9 @@ By the end of this journey, I aim to:
 | ----------------------- | ----------------------------------------------------------- |
 | 🚀 01_agents            | ✅ **Completed** Core agent patterns, context, instructions, structured outputs, advanced orchestration, tool behavior control, agent handoffs |
 | ⚡ 02_runner            | ✅ **Completed** Agent execution, RunResult exploration, execution lifecycle, synchronous execution, streaming patterns, real-time event processing, advanced context, handoffs, chat, exceptions |
-| 📊 03_results           | 🚀 Started: RunResult basics and results handling            |
-| 🔧 04-tool-integration  | ⏳ Coming Up                                                |
+| 📊 03_results           | ✅ **Completed** RunResult basics, results handling, and multi-turn conversation management |
+| 📡 04_stream            | ✅ **Completed** Advanced streaming patterns, real-time events, token-by-token streaming, run item events, and streaming with agent handoffs |
+| 🔧 05_tools             | 🚧 **In Progress** : Function tools, custom configurations, agents as tools, error handling, context-aware tools, and advanced tool choice patterns |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
 | ...                    | ...                                                         |
 
@@ -121,6 +144,8 @@ See each project's README for setup and usage instructions.
 
 ## 🆕 Recent Advanced Additions
 
+- **Advanced Streaming Patterns & Real-Time Events:** See `modules/04_stream/` for comprehensive streaming capabilities including basic streaming, raw response events, run item events, and streaming with agent handoffs.
+- **Function Tools & Advanced Tool Integration:** See `modules/05_tools/` for complete tool ecosystem including basic tools, custom configurations, agents as tools, error handling, context-aware tools, and advanced tool choice patterns.
 - **RunResult Basics & Results Handling:** See `modules/03_results/01_run_result_basics.py` for foundational RunResult usage and results inspection.
 - **Runner Advanced Context & Max Turns:** See `modules/02_runner/06_runner_rcontext.py` for advanced context, tool calls, and max turn handling.
 - **Runner Handoffs:** See `modules/02_runner/07_runner_handoffs.py` for agent handoff routing and smart assistant scenarios.
@@ -217,4 +242,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-07-01_
+_Last Updated: 2025-07-06_
