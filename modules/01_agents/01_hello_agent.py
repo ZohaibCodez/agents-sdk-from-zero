@@ -37,7 +37,7 @@ from agents import (
 # =========================
 
 load_dotenv(find_dotenv())
-set_tracing_disabled(True)
+# set_tracing_disabled(True)
 
 # Configuration constants
 GEMINI_API_KEY: str | None = os.getenv("GEMINI_API_KEY")

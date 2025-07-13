@@ -58,50 +58,18 @@ By the end of this journey, I aim to:
 .
 ├── 📁 modules/
 │   ├── 📁 01_agents/
-│   │   ├── 🐍 01_hello_agent.py
-│   │   ├── 🐍 02_hello_handoff.py
-│   │   ├── 📓 03_agents_instructions.ipynb
-│   │   ├── 🐍 04_agent_context.py
-│   │   ├── 📓 05_immutable_context.ipynb
-│   │   ├── 🐍 06_structure.py
-│   │   ├── 🐍 07_non_strict_output_type.py
-│   │   ├── 🐍 08_advanced_agent_features.py
-│   │   ├── 🐍 09_tool_behaviour.py
-│   │   └── 📄 README.md
 │   ├── 📁 02_runner/
-│   │   ├── 🐍 01_run.py
-│   │   ├── 🐍 02_run_sync.py
-│   │   ├── 🐍 03_stream.py
-│   │   ├── 🐍 04_stream_text.py
-│   │   ├── 🐍 05_stream_items.py
-│   │   ├── 🐍 06_runner_rcontext.py
-│   │   ├── 🐍 07_runner_handoffs.py
-│   │   ├── 🐍 08_runner_chat.py
-│   │   ├── 🐍 09_runner_exceptions.py
-│   │   └── 📄 README.md
 │   ├── 📁 03_results/
-│   │   ├── 🐍 01_run_result_basics.py
-│   │   └── 📄 README.md
 │   ├── 📁 04_stream/
-│   │   ├── 🐍 01_basic_streaming.py
-│   │   ├── 🐍 02_raw_response_events.py
-│   │   ├── 🐍 03_run_item_events.py
-│   │   ├── 🐍 04_streaming_with_handoffs.py
-│   │   └── 📄 README.md
 │   ├── 📁 05_tools/
-│   │   ├── 🐍 01_basic_function_tools.py
-│   │   ├── 🐍 02_custom_function_tools.py
-│   │   ├── 🐍 03_advanced_function_tools.py
-│   │   ├── 🐍 04_agents_as_tools.py
-│   │   ├── 🐍 05_error_handling_tools.py
-│   │   ├── 🐍 06_context_aware_tools.py
-│   │   ├── 🐍 07_tool_choice_streaming.py
-│   │   └── 📄 README.md
+│   ├── 📁 06_handoffs/           # NEW: Advanced handoff, input filtering, callbacks, prompt engineering
+│   ├── 📁 07_lifecycle/          # NEW: Agent lifecycle hooks, monitoring, analytics
+│   ├── 📁 08_exceptions/         # In Progress: Exception handling, error flows
+│   ├── 📁 09_guardrails/         # In Progress: Guardrails, input validation, safety
 │   └── 📁 projects/
-│       ├── 📄 README.md
-│       └── 📁 01_fantasy_world_generator/
-│           ├── 📄 README.md
-│           └── 🐍 main.py
+│       ├── 📁 01_fantasy_world_generator/
+│       ├── 📁 02_university_helpdesk_orchestration/   # NEW: Advanced multi-agent orchestration project
+│       └── 📄 README.md
 ├── 🚫 .gitignore
 ├── 📄 .python-version
 ├── 🐍 main.py
@@ -112,7 +80,7 @@ By the end of this journey, I aim to:
 ├── 📄 LICENSE
 ```
 
-> **Note:** Each module (e.g., `01_agents/`) and project contains its own README for detailed explanations, code summaries, and learning notes.
+> **Note:** Each module and project contains its own README for detailed explanations, code summaries, and learning notes.
 
 ---
 
@@ -124,7 +92,11 @@ By the end of this journey, I aim to:
 | ⚡ 02_runner            | ✅ **Completed** Agent execution, RunResult exploration, execution lifecycle, synchronous execution, streaming patterns, real-time event processing, advanced context, handoffs, chat, exceptions |
 | 📊 03_results           | ✅ **Completed** RunResult basics, results handling, and multi-turn conversation management |
 | 📡 04_stream            | ✅ **Completed** Advanced streaming patterns, real-time events, token-by-token streaming, run item events, and streaming with agent handoffs |
-| 🔧 05_tools             | 🚧 **In Progress** : Function tools, custom configurations, agents as tools, error handling, context-aware tools, and advanced tool choice patterns |
+| 🔧 05_tools             | ✅ **Completed** Function tools, custom configurations, agents as tools, error handling, context-aware tools, advanced tool choice patterns |
+| 🤝 06_handoffs          | ✅ **Completed** Advanced handoff orchestration, input filtering, callbacks, structured handoff data, prompt engineering |
+| 🔄 07_lifecycle         | ✅ **Completed** Agent lifecycle hooks, monitoring, analytics, session management, performance tracking |
+| 🚨 08_exceptions        | 🚧 **In Progress** Exception handling, error flows, advanced error management |
+| 🛡️ 09_guardrails        | 🚧 **In Progress** Guardrails, input validation, safety, compliance |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
 | ...                    | ...                                                         |
 
@@ -134,9 +106,10 @@ By the end of this journey, I aim to:
 
 The `modules/projects/` folder contains real-world, showcase projects that demonstrate advanced agentic workflows, tool integrations, and creative applications using the OpenAI Agents SDK.
 
-### Featured Project
+### Featured Projects
 
 - **[Fantasy World Generator](modules/projects/01_fantasy_world_generator/)**: An interactive multi-agent system that builds a fantasy world, including magic systems, maps, lore, and magical creatures. Demonstrates agent orchestration, agents-as-tools, streaming, and creative AI workflows.
+- **[University Smart Helpdesk Orchestrator](modules/projects/02_university_helpdesk_orchestration/)**: A real-world multi-agent system simulating a university helpdesk. Features advanced orchestration, context-aware routing, escalation handling, streaming UX, and smart agent handoffs. Demonstrates context models, escalation logic, and real-time agent transitions.
 
 See each project's README for setup and usage instructions.
 
@@ -144,26 +117,11 @@ See each project's README for setup and usage instructions.
 
 ## 🆕 Recent Advanced Additions
 
-- **Advanced Streaming Patterns & Real-Time Events:** See `modules/04_stream/` for comprehensive streaming capabilities including basic streaming, raw response events, run item events, and streaming with agent handoffs.
-- **Function Tools & Advanced Tool Integration:** See `modules/05_tools/` for complete tool ecosystem including basic tools, custom configurations, agents as tools, error handling, context-aware tools, and advanced tool choice patterns.
-- **RunResult Basics & Results Handling:** See `modules/03_results/01_run_result_basics.py` for foundational RunResult usage and results inspection.
-- **Runner Advanced Context & Max Turns:** See `modules/02_runner/06_runner_rcontext.py` for advanced context, tool calls, and max turn handling.
-- **Runner Handoffs:** See `modules/02_runner/07_runner_handoffs.py` for agent handoff routing and smart assistant scenarios.
-- **Runner Chat & Multi-Turn Conversations:** See `modules/02_runner/08_runner_chat.py` for chat thread management and conversation history.
-- **Runner Exception Handling:** See `modules/02_runner/09_runner_exceptions.py` for robust exception handling and guardrail demos.
-- **Agent Handoffs & Multi-Agent Coordination:** See `modules/01_agents/02_hello_handoff.py` for agent handoff patterns, triage agents, and specialized agent coordination.
-- **Synchronous Agent Execution:** See `modules/02_runner/02_run_sync.py` for synchronous agent execution without async/await patterns.
-- **Streaming Agent Execution:** See `modules/02_runner/03_stream.py` for real-time streaming agent execution with function tools and event processing.
-- **Text Streaming & Conversation Chaining:** See `modules/02_runner/04_stream_text.py` for real-time text streaming, delta events, and multi-turn conversation management.
-- **Streaming Items & Tool Integration:** See `modules/02_runner/05_stream_items.py` for advanced streaming with tools, event types, and ItemHelpers for message formatting.
-- **Agent Execution & RunResult Exploration:** See `modules/02_runner/01_run.py` for comprehensive agent execution patterns, RunResult object property analysis, and execution lifecycle understanding.
-- **Tool Behavior Control:** See `modules/01_agents/09_tool_behaviour.py` for advanced tool orchestration patterns, execution flow control, and custom tool behavior functions.
-- **Structured Outputs & Schemas:** See `modules/01_agents/06_structure.py` for strict/non-strict schema patterns, Pydantic models, and validation.
-- **Advanced Context Management:** See `modules/01_agents/05_immutable_context.ipynb` for stateful agent context and function tools.
-- **Instruction Patterns:** See `modules/01_agents/03_agents_instructions.ipynb` for static, dynamic, and callable agent instructions.
-- **Agent Cloning, Agent-as-Tool, Orchestration:** See `modules/01_agents/08_advanced_agent_features.py` for advanced agent workflows, tool orchestration, and agent composition.
-- **Flexible Output Handling:** See `modules/01_agents/07_non_strict_output_type.py` for non-strict schema and flexible output examples.
-- **Real-World Projects:** See `modules/projects/` for advanced, practical agentic applications.
+- **Agent Handoffs & Input Filtering:** See `modules/06_handoffs/` for advanced handoff orchestration, input filtering, callbacks, and prompt engineering.
+- **Agent Lifecycle Hooks & Monitoring:** See `modules/07_lifecycle/` for RunHooks, AgentHooks, session management, and analytics.
+- **Guardrails & Exception Handling:** See `modules/08_exceptions/` and `modules/09_guardrails/` for in-progress work on error management and safety.
+- **University Helpdesk Orchestration Project:** See `modules/projects/02_university_helpdesk_orchestration/` for advanced multi-agent orchestration, escalation, and context-aware routing.
+- **All previous advanced streaming, tool integration, and orchestration features remain available in their respective modules.**
 
 ---
 
@@ -242,4 +200,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-07-06_
+_Last Updated: 2025-07-13_

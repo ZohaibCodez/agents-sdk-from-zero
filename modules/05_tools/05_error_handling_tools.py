@@ -13,7 +13,7 @@ It showcases:
 The demo implements various mathematical operations with different error handling approaches.
 
 Environment variables:
-    - MISTRAL_API_KEY: Required for OpenRouter API access.
+    - MISTRAL_API_KEY: Required for Litellm API access.
 
 Author: Zohaib Khan
 """

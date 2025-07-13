@@ -21,6 +21,7 @@ This folder demonstrates the full spectrum of function tool capabilities in the 
 | `05_error_handling_tools.py`    | Advanced error handling strategies and custom error handlers.            |
 | `06_context_aware_tools.py`     | Context-aware tools with user sessions and personalized responses.       |
 | `07_tool_choice_streaming.py`   | Advanced tool choice configurations and streaming with tools.            |
+| `08_async_vs_sync.py`           | Sync vs async agent execution, error handling, and performance benchmarking. |
 
 ---
 
@@ -58,6 +59,9 @@ uv run modules/05_tools/06_context_aware_tools.py
 
 # Tool choice configurations and streaming
 uv run modules/05_tools/07_tool_choice_streaming.py
+
+# Sync vs async agent execution and benchmarking
+uv run modules/05_tools/08_async_vs_sync.py
 ```
 
 ---
@@ -169,6 +173,22 @@ uv run modules/05_tools/07_tool_choice_streaming.py
   - Learn parallel vs sequential execution
   - Build advanced tool orchestration systems
 
+### `08_async_vs_sync.py`
+
+- **Core Focus**: Sync vs async agent execution, error handling, and performance benchmarking
+- **Key Features**:
+  - Synchronous and asynchronous agent execution
+  - Function tools with sync and async behavior
+  - Concurrent agent runs with asyncio.gather
+  - Robust error handling for both sync and async flows
+  - Performance benchmarking: sync vs async sequential vs async concurrent
+  - Professional output formatting for clarity in terminal
+- **Learning Outcomes**:
+  - Understand the difference between sync and async agent execution
+  - Learn to implement and benchmark both patterns
+  - Master error handling in both sync and async flows
+  - Build confidence in concurrent agent execution and performance analysis
+
 ---
 
 ## 🔍 Tool Patterns Deep Dive
@@ -221,7 +241,7 @@ The module covers different levels of tool complexity:
 - Create context-aware tools with user session management
 - Master advanced tool choice configurations and streaming
 - Develop sophisticated tool orchestration and workflow systems
-- Understand different tool patterns and their use cases
+- Understand sync vs async agent execution and benchmarking
 - Build production-ready tool integration systems
 
 ---

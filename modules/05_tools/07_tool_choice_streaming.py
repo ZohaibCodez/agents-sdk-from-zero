@@ -13,7 +13,7 @@ Features demonstrated:
 - Study productivity tools with focus scoring
 
 Environment variables:
-    - GEMINI_API_KEY: Required for Gemini model access.
+    - MISTRAL_API_KEY: Required for Litellm API access.
 
 Author: Zohaib Khan
 """
@@ -69,14 +69,15 @@ print(f"✅ Model configured successfully\n")
 # Function Tools
 # =========================
 
+
 @function_tool
 def study_tip(subject: str) -> str:
     """
     Provide study tips for a specific subject.
-    
+
     Args:
         subject: The subject to provide study tips for
-        
+
     Returns:
         A study tip for the specified subject
     """
@@ -90,11 +91,11 @@ def study_tip(subject: str) -> str:
 def get_focus_score(hours_slept: int, distractions: int) -> str:
     """
     Calculate focus score based on sleep and distractions.
-    
+
     Args:
         hours_slept: Number of hours slept
         distractions: Number of distractions encountered
-        
+
     Returns:
         A focus score out of 100
     """
@@ -109,10 +110,10 @@ def get_focus_score(hours_slept: int, distractions: int) -> str:
 def suggest_break(activity: str = "walking") -> str:
     """
     Suggest a break activity for mental refreshment.
-    
+
     Args:
         activity: The type of break activity (default: walking)
-        
+
     Returns:
         A break suggestion
     """
@@ -138,10 +139,11 @@ base_agent: Agent = Agent(
 # Main Execution
 # =========================
 
+
 async def main():
     """
     Demonstrate various tool choice configurations and streaming capabilities.
-    
+
     Tests different ModelSettings configurations:
     - Auto tool choice (default behavior)
     - Required tool choice (force tool use)
@@ -152,12 +154,12 @@ async def main():
     - Streaming with event handling
     """
     try:
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("🔧 TOOL CHOICE & STREAMING DEMO")
-        print("="*60)
+        print("=" * 60)
 
         # 1. default behavior (tool_choice = "auto")
-        print("\n" + "🔄 TEST 1: Auto Tool Choice\n" + "="*40)
+        print("\n" + "🔄 TEST 1: Auto Tool Choice\n" + "=" * 40)
         sample_query_1 = "Give me a tip for studying statistics"
         print(f"📥 INPUT: {sample_query_1}")
         print("-" * 60)
@@ -166,7 +168,7 @@ async def main():
         print("✅ Test 1 completed successfully!")
 
         # 2. Force tool use (tool_choice = "required")
-        print("\n" + "🔧 TEST 2: Required Tool Choice\n" + "="*35)
+        print("\n" + "🔧 TEST 2: Required Tool Choice\n" + "=" * 35)
         agent_required: Agent = base_agent.clone(
             model_settings=ModelSettings(tool_choice="required")
         )
@@ -178,7 +180,7 @@ async def main():
         print("✅ Test 2 completed successfully!")
 
         # 3. Forbid tool use (tool_choice = "none")
-        print("\n" + "🚫 TEST 3: No Tool Choice\n" + "="*35)
+        print("\n" + "🚫 TEST 3: No Tool Choice\n" + "=" * 35)
         agent_no_tools: Agent = base_agent.clone(
             model_settings=ModelSettings(tool_choice="none")
         )
@@ -190,7 +192,7 @@ async def main():
         print("✅ Test 3 completed successfully!")
 
         # 4. Force specific tool use (tool_choice = "tool_name")
-        print("\n" + "🎯 TEST 4: Specific Tool Choice\n" + "="*35)
+        print("\n" + "🎯 TEST 4: Specific Tool Choice\n" + "=" * 35)
         agent_specific: Agent = base_agent.clone(
             model_settings=ModelSettings(tool_choice="suggest_break")
         )
@@ -202,15 +204,18 @@ async def main():
         print("✅ Test 4 completed successfully!")
 
         # 5. Tool Choice with Reset Behavior (reset_tool_choice="False")
-        print("\n" + "🔄 TEST 5: Reset Tool Choice Behavior\n" + "="*30)
+        print("\n" + "🔄 TEST 5: Reset Tool Choice Behavior\n" + "=" * 30)
         agent_reset_false: Agent = base_agent.clone(
-            model_settings=ModelSettings(tool_choice="required"), reset_tool_choice=False
+            model_settings=ModelSettings(tool_choice="required"),
+            reset_tool_choice=False,
         )
         sample_query_5 = "Hey, there. Give me a tip for studying statistics. I need a focus score and also a break suggestion"
         print(f"📥 INPUT: {sample_query_5}")
         print("-" * 60)
         try:
-            result_5: RunResult = await Runner.run(agent_reset_false, input=sample_query_5)
+            result_5: RunResult = await Runner.run(
+                agent_reset_false, input=sample_query_5
+            )
             print(f"📤 OUTPUT: {result_5.final_output}")
             print("✅ Test 5 completed successfully!")
         except Exception as e:
@@ -218,7 +223,7 @@ async def main():
             print("⚠️ Test 5 failed as expected (reset behavior)")
 
         # 6. Parallel Tool Calls (parallel_tool_calls=True)
-        print("\n" + "⚡ TEST 6: Parallel Tool Calls\n" + "="*35)
+        print("\n" + "⚡ TEST 6: Parallel Tool Calls\n" + "=" * 35)
         agent_parallel: Agent = base_agent.clone(
             model_settings=ModelSettings(tool_choice="auto", parallel_tool_calls=True)
         )
@@ -226,7 +231,9 @@ async def main():
         print(f"📥 INPUT: {sample_query_6}")
         print("-" * 60)
         try:
-            result_6: RunResultStreaming = Runner.run_streamed(agent_parallel, input=sample_query_6)
+            result_6: RunResultStreaming = Runner.run_streamed(
+                agent_parallel, input=sample_query_6
+            )
             print("📡 STREAMING EVENTS:")
             async for event in result_6.stream_events():
                 if event.type == "raw_response_event":
@@ -246,15 +253,19 @@ async def main():
             print("⚠️ Test 6 failed (parallel tool calls not supported)")
 
         # 7. Sequential Tool Calls (parallel_tool_calls=False) - Default
-        print("\n" + "📡 TEST 7: Sequential Tool Calls with Streaming\n" + "="*25)
+        print("\n" + "📡 TEST 7: Sequential Tool Calls with Streaming\n" + "=" * 25)
         agent_sequential: Agent = base_agent.clone(
             model_settings=ModelSettings(parallel_tool_calls=False)  # by default
         )
-        sample_query_7: str = "Give me a study tip for math and calculate my focus score: 6 hours sleep, 3 distractions"
+        sample_query_7: str = (
+            "Give me a study tip for math and calculate my focus score: 6 hours sleep, 3 distractions"
+        )
         print(f"📥 INPUT: {sample_query_7}")
         print("-" * 60)
-        
-        result_7: RunResultStreaming = Runner.run_streamed(agent_sequential, input=sample_query_7)
+
+        result_7: RunResultStreaming = Runner.run_streamed(
+            agent_sequential, input=sample_query_7
+        )
         print("📡 STREAMING EVENTS:")
         async for event in result_7.stream_events():
             if event.type == "raw_response_event":
@@ -267,13 +278,13 @@ async def main():
                     print("🔧 Tool called")
                 elif item.type == "tool_call_output_item":
                     print(f"📤 Tool output: {item.output}")
-        
+
         print(f"\n📤 FINAL OUTPUT: {result_7.final_output}")
         print("✅ Test 7 completed successfully!")
 
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("🎉 ALL TESTS COMPLETED SUCCESSFULLY!")
-        print("="*60)
+        print("=" * 60)
 
     except Exception as e:
         print(f"❌ Error during execution: {e}")

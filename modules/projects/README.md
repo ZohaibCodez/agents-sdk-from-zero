@@ -7,6 +7,7 @@ Welcome to the **Projects** directory of the OpenAI Agents SDK. This directory c
 | Project Name                | Description                                                                                       |
 |----------------------------|---------------------------------------------------------------------------------------------------|
 | [Fantasy World Generator](01_fantasy_world_generator/) | An interactive agent that builds a fantasy world, including magic systems, maps, lore, and magical creatures. |
+| [University Smart Helpdesk Orchestrator](02_university_helpdesk_orchestration/) | A multi-agent university helpdesk system demonstrating advanced orchestration, context-aware routing, and escalation logic across specialized support agents. |
 
 ## Getting Started
 
