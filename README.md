@@ -66,6 +66,8 @@ By the end of this journey, I aim to:
 │   ├── 📁 07_lifecycle/          # NEW: Agent lifecycle hooks, monitoring, analytics
 │   ├── 📁 08_exceptions/         # In Progress: Exception handling, error flows
 │   ├── 📁 09_guardrails/         # In Progress: Guardrails, input validation, safety
+│   ├── 📁 10_multiple_agents.py/     # NEW: Multi-agent orchestration, hybrid orchestration
+│   ├── 📁 11_configuration_visualizations/ # NEW: Configuration visualization
 │   └── 📁 projects/
 │       ├── 📁 01_fantasy_world_generator/
 │       ├── 📁 02_university_helpdesk_orchestration/   # NEW: Advanced multi-agent orchestration project
@@ -97,6 +99,8 @@ By the end of this journey, I aim to:
 | 🔄 07_lifecycle         | ✅ **Completed** Agent lifecycle hooks, monitoring, analytics, session management, performance tracking |
 | 🚨 08_exceptions        | 🚧 **In Progress** Exception handling, error flows, advanced error management |
 | 🛡️ 09_guardrails        | 🚧 **In Progress** Guardrails, input validation, safety, compliance |
+| 🤖 10_multiple_agents.py | 🚀 **Started** Multi-agent orchestration, LLM/code/hybrid orchestration |
+| 📊 11_configuration_visualizations | 🚀 **Started** Configuration visualization |
 | 🧩 Projects             | 🚀 Started: Real-world agentic applications and showcases    |
 | ...                    | ...                                                         |
 
@@ -122,6 +126,8 @@ See each project's README for setup and usage instructions.
 - **Guardrails & Exception Handling:** See `modules/08_exceptions/` and `modules/09_guardrails/` for in-progress work on error management and safety.
 - **University Helpdesk Orchestration Project:** See `modules/projects/02_university_helpdesk_orchestration/` for advanced multi-agent orchestration, escalation, and context-aware routing.
 - **All previous advanced streaming, tool integration, and orchestration features remain available in their respective modules.**
+- **Multi-Agent Orchestration:** See `modules/10_multiple_agents.py/` for LLM-orchestrated, code-orchestrated, and hybrid agent orchestration patterns.
+- **Configuration Visualization:** See `modules/11_configuration_visualizations/` for configuration visualization tools and examples.
 
 ---
 
@@ -200,4 +206,4 @@ Learn deeply. Build consistently. Teach simply.
 
 **📚 Learning Never Stops** – This repository is a living record of my OpenAI Agents SDK mastery. Join me on the journey!
 
-_Last Updated: 2025-07-13_
+_Last Updated: 2025-07-28_

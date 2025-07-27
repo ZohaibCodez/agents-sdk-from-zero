@@ -1,33 +1,41 @@
+"""
+modules/06_handoffs/06_recommended_prompts.py
+
+Demonstration of recommended prompt patterns for agent handoffs in customer support scenarios.
+
+Features:
+- Shows best practices for LLM handoff prompt design (manual and helper-based)
+- Demonstrates clear, professional, and context-rich handoff instructions
+- Compares agent behavior with and without recommended prompts
+- Provides educational output and guidance for debugging
+
+Environment Variables:
+- GEMINI_API_KEY: API key for Gemini model (required)
+
+Author: Zohaib Khan
+References:
+- OpenAI Agents SDK documentation
+- Gemini API documentation
+"""
 # ============================
 # Imports and Setup
 # ============================
 import asyncio
 import os
 from dotenv import load_dotenv, find_dotenv
-from agents.extensions.models.litellm_model import LitellmModel
-from agents.extensions import handoff_filters
 from agents import (
     Agent,
-    ItemHelpers,
-    ModelSettings,
     OpenAIChatCompletionsModel,
-    RunContextWrapper,
     Runner,
     enable_verbose_stdout_logging,
-    function_tool,
     handoff,
     set_tracing_disabled,
-    HandoffInputData,
 )
 from agents.extensions.handoff_prompt import (
     RECOMMENDED_PROMPT_PREFIX,
     prompt_with_handoff_instructions,
 )
 from openai import AsyncOpenAI
-from pydantic import BaseModel, Field
-from typing import Optional, List
-from enum import Enum
-
 
 # =========================
 # Verbose Logging (LLM Debug Mode)
@@ -47,11 +55,11 @@ GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/
 GEMINI_MODEL_NAME: str = "gemini-2.0-flash"
 
 if not GEMINI_API_KEY:
-    print("❌ GEMINI_API_KEY environment variable is required but not found.")
+    print("\n❌ [ERROR] GEMINI_API_KEY environment variable is required but not found.\n")
     raise ValueError("GEMINI_API_KEY environment variable is required but not found.")
 
 print(f"\n==============================")
-print(f"🚀 Initializing Gemini client with model: {GEMINI_MODEL_NAME}")
+print(f"🤖 Initializing Gemini client with model: {GEMINI_MODEL_NAME}")
 print(f"==============================\n")
 
 external_client = AsyncOpenAI(
@@ -67,8 +75,16 @@ print(f"✅ Model configured successfully\n")
 
 
 async def main():
-    """Demonstrate recommended prompt patterns for better handoff understanding."""
+    """Demonstrate recommended prompt patterns for better handoff understanding.
 
+    Runs a series of test cases to show:
+    - How recommended prompts improve handoff clarity and professionalism
+    - The difference between agents with and without recommended prompt patterns
+    - Educational output for each scenario
+    """
+    # ============================
+    # Agent Definitions
+    # ============================
     # Method 1: Using RECOMMENDED_PROMPT_PREFIX directly
     billing_agent_manual = Agent(
         name="Billing Agent (Manual Prompt)",
@@ -109,7 +125,6 @@ async def main():
         model=model,
     )
 
-    # Create specialized agents with recommended prompts
     technical_agent = Agent(
         name="Technical Support",
         instructions=f"""{RECOMMENDED_PROMPT_PREFIX}
@@ -145,7 +160,9 @@ async def main():
         model=model,
     )
 
-    # Create triage agent with recommended prompts and handoffs
+    # ============================
+    # Triage Agent with Handoffs
+    # ============================
     triage_agent = Agent(
         name="Customer Service Triage",
         instructions=prompt_with_handoff_instructions(
@@ -194,61 +211,84 @@ async def main():
         ],
     )
 
-    print("=== Recommended Prompts for Better Handoffs ===")
-    print()
+    # ============================
+    # Demo/Test Cases
+    # ============================
+    print("\n==============================")
+    print("🎓 Recommended Prompts for Better Handoffs")
+    print("==============================\n")
 
-    # Demonstrate the recommended prompt content
-    print("=== Recommended Prompt Prefix Content ===")
+    # Show recommended prompt prefix
+    print("--- Recommended Prompt Prefix Content ---")
     print(f"RECOMMENDED_PROMPT_PREFIX:\n{RECOMMENDED_PROMPT_PREFIX}")
     print()
 
     # Test Case 1: Billing issue with proper explanation
-    print("=== Test 1: Billing Issue (Should explain transfer) ===")
-    result1 = await Runner.run(
-        triage_agent,
-        input="I received a charge on my credit card that I don't recognize. It's for $99.99 from your company but I didn't make any purchases recently.",
-    )
-    print(f"Result: {result1.final_output}")
+    print("--- Test 1: Billing Issue (Should explain transfer) ---")
+    try:
+        result1 = await Runner.run(
+            triage_agent,
+            input="I received a charge on my credit card that I don't recognize. It's for $99.99 from your company but I didn't make any purchases recently.",
+        )
+        print(f"Result: {result1.final_output}")
+    except Exception as e:
+        print(f"❌ [Test 1 Error] {e}")
     print()
 
     # Test Case 2: Refund request with context
-    print("=== Test 2: Refund Request (Should set expectations) ===")
-    result2 = await Runner.run(
-        triage_agent,
-        input="I want to return a product I bought last month. It doesn't work as advertised and I'd like my money back.",
-    )
-    print(f"Result: {result2.final_output}")
+    print("--- Test 2: Refund Request (Should set expectations) ---")
+    try:
+        result2 = await Runner.run(
+            triage_agent,
+            input="I want to return a product I bought last month. It doesn't work as advertised and I'd like my money back.",
+        )
+        print(f"Result: {result2.final_output}")
+    except Exception as e:
+        print(f"❌ [Test 2 Error] {e}")
     print()
 
     # Test Case 3: Technical issue requiring specialist
-    print("=== Test 3: Technical Issue (Should summarize for specialist) ===")
-    result3 = await Runner.run(
-        triage_agent,
-        input="Your API keeps returning 500 errors when I try to upload files. I've checked my API key and it's valid. This is blocking my production deployment.",
-    )
-    print(f"Result: {result3.final_output}")
+    print("--- Test 3: Technical Issue (Should summarize for specialist) ---")
+    try:
+        result3 = await Runner.run(
+            triage_agent,
+            input="Your API keeps returning 500 errors when I try to upload files. I've checked my API key and it's valid. This is blocking my production deployment.",
+        )
+        print(f"Result: {result3.final_output}")
+    except Exception as e:
+        print(f"❌ [Test 3 Error] {e}")
     print()
 
     # Test Case 4: Complex issue requiring escalation
-    print("=== Test 4: Complex Escalation (Should provide context) ===")
-    result4 = await Runner.run(
-        triage_agent,
-        input="""This is extremely frustrating. I've been a customer for 3 years and this is the worst 
-        service I've experienced. Your system deleted my data, billing charged me during a service outage, 
-        and now I'm told there's no backup. I want to speak to someone with actual authority to fix this 
-        disaster and compensate me for the business I've lost.""",
-    )
-    print(f"Result: {result4.final_output}")
+    print("--- Test 4: Complex Escalation (Should provide context) ---")
+    try:
+        result4 = await Runner.run(
+            triage_agent,
+            input="""This is extremely frustrating. I've been a customer for 3 years and this is the worst \
+            service I've experienced. Your system deleted my data, billing charged me during a service outage, \
+            and now I'm told there's no backup. I want to speak to someone with actual authority to fix this \
+            disaster and compensate me for the business I've lost.""",
+        )
+        print(f"Result: {result4.final_output}")
+    except Exception as e:
+        print(f"❌ [Test 4 Error] {e}")
     print()
 
     # Test Case 5: Ambiguous request that needs clarification
-    print("=== Test 5: Ambiguous Request (Should gather info before transfer) ===")
-    result5 = await Runner.run(triage_agent, input="Hi, I need help with my account.")
-    print(f"Result: {result5.final_output}")
+    print("--- Test 5: Ambiguous Request (Should gather info before transfer) ---")
+    try:
+        result5 = await Runner.run(triage_agent, input="Hi, I need help with my account.")
+        print(f"Result: {result5.final_output}")
+    except Exception as e:
+        print(f"❌ [Test 5 Error] {e}")
     print()
 
-    # Show the difference between agents with and without recommended prompts
-    print("=== Comparison: With vs Without Recommended Prompts ===")
+    # ============================
+    # Comparison: With vs Without Recommended Prompts
+    # ============================
+    print("==============================")
+    print("🔍 Comparison: With vs Without Recommended Prompts")
+    print("==============================\n")
 
     # Agent without recommended prompts
     basic_agent = Agent(
@@ -259,21 +299,31 @@ async def main():
     )
 
     print("Agent WITHOUT recommended prompts:")
-    result_basic = await Runner.run(
-        basic_agent, input="I have a billing problem and need help."
-    )
-    print(f"Basic Result: {result_basic.final_output}")
+    try:
+        result_basic = await Runner.run(
+            basic_agent, input="I have a billing problem and need help."
+        )
+        print(f"Basic Result: {result_basic.final_output}")
+    except Exception as e:
+        print(f"❌ [Basic Agent Error] {e}")
     print()
 
     print("Agent WITH recommended prompts (from above):")
-    result_recommended = await Runner.run(
-        triage_agent, input="I have a billing problem and need help."
-    )
-    print(f"Recommended Result: {result_recommended.final_output}")
+    try:
+        result_recommended = await Runner.run(
+            triage_agent, input="I have a billing problem and need help."
+        )
+        print(f"Recommended Result: {result_recommended.final_output}")
+    except Exception as e:
+        print(f"❌ [Recommended Agent Error] {e}")
     print()
 
-    # Explain the benefits
-    print("=== Benefits of Recommended Prompts ===")
+    # ============================
+    # Educational Summary
+    # ============================
+    print("==============================")
+    print("📚 Benefits of Recommended Prompts")
+    print("==============================\n")
     benefits = """
     The recommended prompts help LLMs understand handoffs better by:
     
